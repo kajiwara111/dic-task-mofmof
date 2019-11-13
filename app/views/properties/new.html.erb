@@ -1,0 +1,29 @@
+<h1>物件登録</h1>
+<%= form_for(@property) do |f| %>
+  <div class="field">
+    <%= f.label :property_name, '物件名' %><br>
+    <%= f.text_field :property_name %><br>
+    <%= f.label :rent, '賃料' %><br>
+    <%= f.number_field :rent %><br>
+    <%= f.label :address, '住所' %><br>
+    <%= f.text_field :address %><br>
+    <%= f.label :age_of_a_building, '築年数' %><br>
+    <%= f.number_field :age_of_a_building %><br>
+  </div>
+  <div class="field">
+    <% count_num = 1 %>
+    <%= f.fields_for :nearest_stations do |n_st_form| %>
+      <h3>最寄駅<%= count_num %></h3>
+      <%= n_st_form.label :train_route_name, "路線名" %><br>
+      <%= n_st_form.text_field :train_route_name %><br>
+      <%= n_st_form.label :station_name, "駅名" %><br>
+      <%= n_st_form.text_field :station_name %><br>
+      <%= n_st_form.label :walking_minutes, "徒歩分数" %><br>
+      <%= n_st_form.text_field :walking_minutes %><br>
+      <% count_num = count_num + 1 %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

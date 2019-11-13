@@ -1,11 +1,22 @@
 class PropertiesController < ApplicationController
   def index
+    @properties = Property.all
   end
 
   def new
+    @property = Property.new
+    #@property.nearest_stations.build
+    2.times{
+      @property.nearest_stations.build
+    }
   end
 
   def create
+    #@property = Property.create(property_params)
+    @property = Property.new(property_params)
+    @property.save
+    render 'new'
+    #@property
   end
 
   def show
@@ -20,8 +31,13 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:property_name, :rent, :address, :age_of_a_building, :note,
-                                      :train_route_name1, :station_name1, :walking_minutes1, :train_route_name2,
-                                      :station_name2, :walking_minutes2)
+    params.require(:property).permit(
+      :property_name,
+      :rent,
+      :address,
+      :age_of_a_building,
+      :note,
+      nearest_stations_attributes: [:train_route_name, :station_name, :walking_minutes]
+    )
   end
 end
