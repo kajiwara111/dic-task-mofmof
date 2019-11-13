@@ -5,27 +5,39 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    #@property.nearest_stations.build
     2.times{
       @property.nearest_stations.build
     }
   end
 
   def create
-    #@property = Property.create(property_params)
     @property = Property.new(property_params)
-    @property.save
-    render 'new'
-    #@property
+    if @property.save
+      flash[:notice] = '物件情報は正常に登録されました'
+      redirect_to properties_path
+    else
+      flash.now[:danger] = '物件情報の登録に失敗しました'
+      render :new
+    end
   end
 
   def show
+    @property = Property.find(params[:id])
   end
 
   def edit
+    @property = Property.find(params[:id])
   end
 
   def update
+    @property = Property.find(params[:id])
+    if @property.update(property_params)
+      flash[:notice] = '物件情報を更新しました'
+      redirect_to properties_path
+    else
+      flash.now[:danger] = '物件情報の更新に失敗しました'
+      render :edit
+    end
   end
 
   private
