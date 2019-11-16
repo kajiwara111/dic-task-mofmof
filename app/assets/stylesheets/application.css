@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .proptable {
+  border-collapse: separate;
+  border-spacing: 12px 0px;
+}
+
+th {
+  text-align: left;
+}

@@ -4,11 +4,11 @@
     <%= f.label :property_name, '物件名' %><br>
     <%= f.text_field :property_name %><br>
     <%= f.label :rent, '賃料' %><br>
-    <%= f.number_field :rent %><br>
+    <%= f.number_field :rent %>円<br>
     <%= f.label :address, '住所' %><br>
     <%= f.text_field :address %><br>
     <%= f.label :age_of_a_building, '築年数' %><br>
-    <%= f.number_field :age_of_a_building %><br>
+    <%= f.number_field :age_of_a_building %>年<br>
     <%= f.label :note, '備考' %><br>
     <%= f.text_area :note %><br>
   </div>
@@ -21,7 +21,7 @@
       <%= n_st_form.label :station_name, "駅名" %><br>
       <%= n_st_form.text_field :station_name %><br>
       <%= n_st_form.label :walking_minutes, "徒歩分数" %><br>
-      <%= n_st_form.text_field :walking_minutes %><br>
+      <%= n_st_form.text_field :walking_minutes %>分<br>
       <% count_num = count_num + 1 %>
     <% end %>
   </div>

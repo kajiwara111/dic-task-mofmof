@@ -1,6 +1,6 @@
 <h1>物件一覧</h1>
 <%= notice %>
-<table>
+<table class="proptable">
     <tr>
         <th>物件名</th>
         <th>賃料</th>
@@ -11,9 +11,9 @@
 <% @properties.each do |prop| %>
     <tr>
         <td><%= prop.property_name %></td>
-        <td><%= prop.rent %></td>
+        <td><%= prop.rent %>円</td>
         <td><%= prop.address %></td>
-        <td><%= prop.age_of_a_building %></td>
+        <td><%= prop.age_of_a_building %>年</td>
         <td><%= prop.note %></td>
         <td><%= link_to '詳細', property_path(prop.id) %></td>
         <td><%= link_to '編集', edit_property_path(prop.id) %></td>
