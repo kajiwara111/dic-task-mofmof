@@ -12,6 +12,7 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
+    binding.pry
     if @property.save
       flash[:notice] = '物件情報は正常に登録されました'
       redirect_to properties_path
