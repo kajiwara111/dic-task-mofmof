@@ -3,7 +3,7 @@ class Property < ApplicationRecord
   #下記reject_if: :all_blankがないと未入力フォーム分もDBに登録される。
   #編集時、form_forのモデルに渡すインスタンスが空であればcreate actionにとぶため新規登録扱いになる。
   #結果編集のたびにフォーム数が増えていくバグになる
-  accepts_nested_attributes_for :nearest_stations, reject_if: :all_blank
+  accepts_nested_attributes_for :nearest_stations, reject_if: :all_blank, allow_destroy: true
   validates :property_name, presence: true
   validates :rent, presence: true
   validates :address, presence: true
