@@ -23,6 +23,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @nearest_stations = @property.nearest_stations
   end
 
   def edit
@@ -38,6 +39,12 @@ class PropertiesController < ApplicationController
       flash.now[:danger] = '物件情報の更新に失敗しました'
       render :edit
     end
+  end
+
+  def destroy
+    @property = Property.find(params[:id])
+    @property.destroy
+    redirect_to properties_path, notice: '物件情報を削除しました'
   end
 
   private
