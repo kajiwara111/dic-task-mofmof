@@ -1,5 +1,5 @@
 class Property < ApplicationRecord
-  has_many :nearest_stations, inverse_of: :property
+  has_many :nearest_stations, inverse_of: :property, dependent: :destroy
   #下記reject_if: :all_blankがないと未入力フォーム分もDBに登録される。
   #編集時、form_forのモデルに渡すインスタンスが空であればcreate actionにとぶため新規登録扱いになる。
   #結果編集のたびにフォーム数が増えていくバグになる
